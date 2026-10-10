@@ -27,10 +27,10 @@ Date: 2026-08-15
 ## TESTED locally
 
 - SITECRAFT package validator: passed.
-- SITECRAFT bridge suite: 22 tests passed.
+- SITECRAFT test suite: 22 tests passed.
 - FOUNDRY package validator: passed with 25 references, 22 positive routing
   cases, and 17 adversarial evaluation cases.
-- FOUNDRY bridge suite: 14 tests passed.
+- FOUNDRY test suite: 14 tests passed.
 - FOUNDRY deterministic scenario evaluator: passed, including 6 negative routes
   and 4 artifact corruption gates; largest routed packet remained below its
   22,000-character ceiling.
@@ -75,7 +75,5 @@ official Agent Skills reference validator.
   Code CLI was not available in this task environment, so plugin marketplace
   installation was not rerun for 1.1.0.
 - GitHub Actions is an external commit-level check; its live result is recorded on GitHub rather than predicted by this pre-push receipt.
-- PC Bridge integration was not required for the portable benchmark and was not
-  treated as execution authority.
 - No package registry publication, deployment, production load, or security
   certification is claimed.

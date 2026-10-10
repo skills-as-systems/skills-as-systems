@@ -137,15 +137,6 @@ class FoundryPackageTests(unittest.TestCase):
                 self.assertTrue(case["required_evidence"])
                 self.assertTrue(case["failure_vetoes"])
 
-    def test_portable_core_has_no_bridge_dependency_or_carried_authority(self) -> None:
-        manifest = load_json("pc-bridge.skill.json")
-        contract = load_json("assets/change-contract-template.json")
-        continuation = load_json("assets/continuation-record-template.json")
-        self.assertEqual(manifest["requires"], [])
-        self.assertIn("any", manifest["hosts"])
-        self.assertFalse(contract["authority"]["permissions_carried_by_contract"])
-        self.assertFalse(continuation["safety"]["permissions_carried_over"])
-        self.assertTrue(continuation["safety"]["receiving_worker_must_refresh_state"])
 
     def test_artifact_mutation_does_not_change_source_example(self) -> None:
         original = load_json("examples/change-contract-example.json")

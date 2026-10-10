@@ -43,23 +43,6 @@ For the official H3 CLI path:
 - once a task ID exists, recovery operates on that task rather than creating another one
 - do not interpret a local polling/download problem as evidence that generation must be resubmitted
 
-## PC Bridge execution contract
-
-When Sitecraft is running through PC Bridge:
-
-### External MCP route
-- use the protected external-provider connection path
-- discover the provider's live tools before claiming H3 support
-- record the provider/tool/model chosen in the work session
-- keep generated output inside an approved project/output root
-
-### MMX CLI route
-- raw shell requires a narrow project-scoped `shell` lease using resource `raw-shell`
-- execute from the explicit Sitecraft/target project
-- never place secrets directly in the command text
-- use one blocking generation command for one paid task when a completed file is requested
-- retain the task ID and exact output path in the handoff if the task continues beyond a tool/session boundary
-
 ## Reference-role mapping
 
 Assign every reference one job before generation:

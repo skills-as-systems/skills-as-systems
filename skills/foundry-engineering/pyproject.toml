@@ -8,4 +8,4 @@ dependencies = []
 [tool.foundry]
 validator = "scripts/validate_skill.py"
 artifact_validator = "scripts/validate_artifact.py"
-test_entry = "bridge_v2_tests.py"
+test_entry = "run_tests.py"

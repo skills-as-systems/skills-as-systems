@@ -29,7 +29,7 @@ The selected route is intentionally a free string. A current project may choose 
 
 ### Host Capability Profile
 
-The Host Capability Profile belongs to the current ChatGPT, Claude, Codex, PC Bridge, generic MCP, CI, or other agent environment. It records what this host can actually inspect, change, run, observe, persist, or release now.
+The Host Capability Profile belongs to the current ChatGPT, Claude, Codex, generic MCP, CI, or other agent environment. It records what this host can actually inspect, change, run, observe, persist, or release now.
 
 Do not store host permissions as website requirements. Re-discover them when work moves to another host.
 

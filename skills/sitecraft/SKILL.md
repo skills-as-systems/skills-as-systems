@@ -25,7 +25,7 @@ Routes: **Frame**, **Map**, **Compose**, **Choreograph**, **Build**, **Observe**
 
 For substantial work, [schemas/experience-contract.schema.json](schemas/experience-contract.schema.json) is authoritative. Brainstorms, builder output, reviews, and handoffs never replace it silently. A full contract file is not mandatory for every build: bounded single-surface work should use the compact contract threshold in [interaction and routing](references/interaction-and-routing.md) and must not create schema-shaped paperwork without a durability need. Use `continuity_system` only for genuine shared continuity.
 
-Load only matching material. Start with [architecture](references/architecture-maintenance-compact.md), [routing](references/interaction-and-routing.md), [visual](references/visual-system.md), [evidence](references/evidence-and-qa.md), [harness](references/harness-integration.md), or [handoff](references/handoff-and-continuity.md). Compacts: [images](references/generated-image-production-compact.md), [video](references/generated-video-production-compact.md), [motion](references/motion-design-and-graphics-compact.md), [capabilities](references/capability-palette-compact.md). Specialized routes: [character identity boards](references/character-identity-board.md), [Creative DNA reference analysis](references/creative-dna-reference-analysis.md), [interactive generated motion](references/interactive-generated-motion.md), [MiniMax H3](references/minimax-h3-video.md), and [PC Bridge creative integration](references/pc-bridge-integration-upgrade.md).
+Load only matching material. Start with [architecture](references/architecture-maintenance-compact.md), [routing](references/interaction-and-routing.md), [visual](references/visual-system.md), [evidence](references/evidence-and-qa.md), [harness](references/harness-integration.md), or [handoff](references/handoff-and-continuity.md). Compacts: [images](references/generated-image-production-compact.md), [video](references/generated-video-production-compact.md), [motion](references/motion-design-and-graphics-compact.md), [capabilities](references/capability-palette-compact.md). Specialized routes: [character identity boards](references/character-identity-board.md), [Creative DNA reference analysis](references/creative-dna-reference-analysis.md), [interactive generated motion](references/interactive-generated-motion.md), [MiniMax H3](references/minimax-h3-video.md).
 
 ## Work
 
@@ -49,11 +49,11 @@ Begin with ordinary evidence. Escalate to logs/traces/profiles/runtime/media/fra
 
 Before release verify declared accessibility, performance, public/private separation, security, support promises, rollback, and human approval. Missing required evidence means not production-ready.
 
-## Portability + PC Bridge
+## Portability
 
 Keep product Runtime Capability Plan separate from temporary Host Capability Profile; re-discover after handoff. When capability is missing, name the semantic need first. The host may use native capability, plan a reviewed extension/plugin, hand off the bounded task, or return a portable packet. Planning grants no network/login/provider/spend/write/deploy authority.
 
-PC Bridge may strengthen guarded local access, rollback, missions, evidence, verification, continuity IDs, provenance, diagnostics, learning persistence, routing, and capability/plugin planning, but SITECRAFT remains usable without it. For shared skill edits, prefer PC Bridge hash-checked transactional patch plans with automatic rollback. For H3 or other external generation, discover the live model/tool capability before claiming support and preserve paid-task identity across handoff so a reconnect never creates a duplicate generation.
+For H3 or other external generation, discover the live model/tool capability before claiming support and preserve paid-task identity across handoff so a reconnect never creates a duplicate generation.
 
 Handoffs carry compact contract/build/capability/continuity pointers, never hidden reasoning, transcripts, secrets, or assumed permissions. Validate Contract + Review + Handoff together when they describe one state.
 

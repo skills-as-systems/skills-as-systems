@@ -166,11 +166,6 @@ def validate_skill(name: str, errors: list[str]) -> None:
     version = version_path.read_text(encoding="utf-8-sig").strip() if version_path.is_file() else ""
     if not re.fullmatch(r"\d+\.\d+\.\d+", version):
         errors.append(f"{relative_root}: missing or invalid VERSION")
-    manifest_path = root / "pc-bridge.skill.json"
-    if manifest_path.is_file():
-        manifest = load_json(manifest_path, errors)
-        if isinstance(manifest, dict) and manifest.get("version") != version:
-            errors.append(f"{relative_root}: pc-bridge.skill.json version differs from VERSION")
     pyproject_path = root / "pyproject.toml"
     if pyproject_path.is_file():
         pyproject = pyproject_path.read_text(encoding="utf-8-sig")

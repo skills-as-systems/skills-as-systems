@@ -137,7 +137,7 @@
   },
   {
     "id": "cross-harness-capability-handoff",
-    "request": "Plan the website in ChatGPT, implement the approved capability plan in Codex, inspect temporal evidence through PC Bridge or another observing host, and make the work resumable in Claude without assuming the same tools or permissions. Keep the website decisions provider-neutral and carry exact verification evidence and blockers between hosts.",
+    "request": "Plan the website in ChatGPT, implement the approved capability plan in Codex, inspect temporal evidence through any observing host, and make the work resumable in Claude without assuming the same tools or permissions. Keep the website decisions provider-neutral and carry exact verification evidence and blockers between hosts.",
     "mode": "Evolve",
     "routes": ["Frame", "Build", "Observe", "Harden"],
     "required_references": ["capability-palette-and-orchestration", "harness-integration", "implementation-routing", "evidence-and-qa", "platform-and-browser-portability"],

@@ -75,7 +75,7 @@ Do not repair an engine-specific problem by breaking the semantic fallback or an
 
 ## Capture and browser adapters
 
-SITECRAFT may use Playwright, WebDriver, browser developer tools, a CI browser service, PC Bridge, operating-system capture APIs, or manual evidence. None is mandatory to the skill.
+SITECRAFT may use Playwright, WebDriver, browser developer tools, a CI browser service, operating-system capture APIs, or manual evidence. None is mandatory to the skill.
 
 For each capture or automation route, record:
 

@@ -33,10 +33,10 @@ jobs:
         run: python scripts/smoke_install.py
 
       - name: Test SITECRAFT
-        run: python skills/sitecraft/bridge_v2_tests.py
+        run: python skills/sitecraft/run_tests.py
 
       - name: Test FOUNDRY
-        run: python skills/foundry-engineering/bridge_v2_tests.py
+        run: python skills/foundry-engineering/run_tests.py
 
       - name: Evaluate FOUNDRY routing scenarios
         run: python skills/foundry-engineering/scripts/evaluate_scenarios.py

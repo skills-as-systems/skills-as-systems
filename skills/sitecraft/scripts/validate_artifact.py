@@ -1552,7 +1552,7 @@ def main() -> int:
     if limited:
         print(
             f"SITECRAFT {args.kind} passed standard-library structural and semantic validation. "
-            "Install jsonschema or use the PC Bridge staged workflow for full Draft 2020-12 schema validation."
+            "Install jsonschema or use a full JSON Schema validator for Draft 2020-12 schema validation."
         )
     else:
         print(f"SITECRAFT {args.kind} validation passed.")

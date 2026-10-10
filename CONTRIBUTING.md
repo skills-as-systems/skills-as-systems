@@ -46,8 +46,8 @@ Run:
 ```text
 python3 scripts/validate_repository.py
 python3 scripts/smoke_install.py
-python3 skills/sitecraft/bridge_v2_tests.py
-python3 skills/foundry-engineering/bridge_v2_tests.py
+python3 skills/sitecraft/run_tests.py
+python3 skills/foundry-engineering/run_tests.py
 ```
 
 If the change affects routing, add or update positive and negative cases. If it changes a schema or invariant, add a mutation that fails for the intended reason. If it changes host packaging, test both Codex and Claude directory layouts.

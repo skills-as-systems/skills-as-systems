@@ -15,7 +15,7 @@ In any capable chat or agent environment, SITECRAFT can:
 - create verification plans;
 - report explicit unverified states.
 
-It must not require PC Bridge, a particular coding agent, or a particular AI builder to provide useful work.
+It must not require a particular coding agent, or a particular AI builder to provide useful work.
 
 ## Capability negotiation
 
@@ -54,7 +54,7 @@ Re-discover the Host Capability Profile after a handoff. For image production, d
 
 SITECRAFT owns the semantic need, not the provider. When a required host capability is unavailable, first describe the missing capability and why the current bounded task needs it. Then let the current host decide whether it already has an equivalent native capability, can plan a reviewed extension/plugin route, should hand the task to another capable host, or should return a portable work packet instead.
 
-Planning an acquisition route is not execution authority. It grants no network access, authentication, provider activation, spending, filesystem scope, deployment permission, or approval to change the Experience Contract. PC Bridge may use its capability/plugin planning layer to produce a task-scoped route and data boundary, but SITECRAFT remains valid when PC Bridge is absent and must not encode that route as permanent creative policy.
+Planning an acquisition route is not execution authority. It grants no network access, authentication, provider activation, spending, filesystem scope, deployment permission, or approval to change the Experience Contract. A host may produce a task-scoped route and data boundary, but SITECRAFT must not encode that route as permanent creative policy.
 
 ## Capability levels
 
@@ -77,26 +77,6 @@ Capture or inspect screenshots and recordings. Tie findings to exact viewports, 
 ### Release-capable
 
 Review deployment configuration and execute approved release actions. Require exact-state verification and explicit human authority.
-
-## PC Bridge enhancement
-
-When PC Bridge is available, prefer its guarded features for local projects:
-
-- selected-folder confinement;
-- active-project and project-brief inspection;
-- bounded persistent goals and missions;
-- exact text patches or reviewed patch plans;
-- write approval and recovery records;
-- registered verification workflows;
-- screenshot and short recording evidence;
-- scoped diagnostic evidence such as browser logs, traces, profiles, media inspection, and runtime state when a real defect justifies escalation;
-- project memory and continuation packets that can preserve relevant continuity anchor/state IDs without replacing the Experience Contract;
-- review provenance and evidence receipts that distinguish self, fresh-context, independent, human, and automated passes;
-- project-local learning candidates that remain unpromoted until their evidence and approval rules are satisfied;
-- skill discovery, routing, validation, staged workflows, and task-scoped capability/plugin planning;
-- release review and guarded publishing where configured.
-
-PC Bridge does not grant design approval, security assurance, accessibility conformance, or production readiness by itself. SITECRAFT interprets the evidence; the owner remains final authority.
 
 ## Cross-host continuity
 
@@ -159,7 +139,7 @@ When a skill is also the active development project:
 - restart a staged workflow after an intentional skill-package revision;
 - record fixture identity separately from skill identity.
 
-For PC Bridge Skill Fabric, `build/`, `dist/`, and `.cache/` are ignored by the resource catalogue. SITECRAFT forward-test fixtures use `build/forward-tests/` so they remain inside the approved project while not becoming skill resources.
+Fixtures under `build/`, `dist/`, and `.cache/` are not skill resources. SITECRAFT forward-test fixtures use `build/forward-tests/` so they stay inside the approved project.
 
 ## Tool failure
 
