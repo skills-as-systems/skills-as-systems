@@ -3,7 +3,7 @@
 Each gate has a stop rule, a required artifact and one entry in the gate log (`assets/gate-log.template.json`, copy to `gate-log.json` at G0). Status is `pending`, `done`, `waived` (reason in `waiver`, from the owner) or `blocked`. The log makes skipping visible. It is a checker, not a lock.
 
 ## Re-entry
-On any return, read `gate-log.json` first, say which gate you are at, continue. At the end of every gate update the log and name the next gate.
+On any return, read `gate-log.json` first, say which gate you are at, continue. At the end of every gate update the log and name the next gate. State lives in the file so it survives compaction and restarts. `scripts/gate_log.py validate gate-log.json` checks the log (done needs evidence, waived needs a reason, no gate done while an earlier one is pending, level claims match capabilities); `gate_log.py report a.json b.json` shows where the run is and which gates were skipped, waived or blocked across runs.
 
 ## Gates
 - G0 Intake. Repo root, branch, dirty state, and what can run (tests, shell, browser, sub-agents). Read the constitution (`assets/constitution-template.md`) if the repo has one. Record the level.
