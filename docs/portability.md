@@ -5,19 +5,19 @@
 ### Ask the receiving agent
 
 ```text
-Install SITECRAFT and FOUNDRY from https://github.com/makiaveli1/skills-as-systems for this harness. Prefer its native skill or plugin installer; otherwise use the repository's portable installer. Verify both skills are discoverable and report the exact installed paths. Do not add permissions or external integrations.
+Install SITECRAFT and FOUNDRY from https://github.com/skills-as-systems/skills-as-systems for this harness. Prefer its native skill or plugin installer; otherwise use the repository's portable installer. Verify both skills are discoverable and report the exact installed paths. Do not add permissions or external integrations.
 ```
 
 ### Codex user install
 
 ```bash
-git clone --depth 1 https://github.com/makiaveli1/skills-as-systems.git && python3 skills-as-systems/scripts/install.py codex
+git clone --depth 1 https://github.com/skills-as-systems/skills-as-systems.git && python3 skills-as-systems/scripts/install.py codex
 ```
 
 ### Claude Code plugin install
 
 ```bash
-claude plugin marketplace add makiaveli1/skills-as-systems && claude plugin install skills-as-systems@skills-as-systems
+claude plugin marketplace add skills-as-systems/skills-as-systems && claude plugin install skills-as-systems@skills-as-systems
 ```
 
 ### Existing checkout
