@@ -219,13 +219,13 @@ def validate_host_wrappers(errors: list[str]) -> None:
             errors.append("Claude plugin name must be skills-as-systems")
         if plugin.get("license") != "Apache-2.0":
             errors.append("Claude plugin must declare Apache-2.0")
-        if not isinstance(plugin.get("author"), dict) or plugin["author"].get("name") != "MAKIAVELI":
-            errors.append("Claude plugin author must be MAKIAVELI")
+        if not isinstance(plugin.get("author"), dict) or plugin["author"].get("name") != "Gbemi Akadiri":
+            errors.append("Claude plugin author must be Gbemi Akadiri")
     if isinstance(marketplace, dict):
         if marketplace.get("name") != "skills-as-systems":
             errors.append("Claude marketplace name must be skills-as-systems")
-        if not isinstance(marketplace.get("owner"), dict) or marketplace["owner"].get("name") != "MAKIAVELI":
-            errors.append("Claude marketplace owner must be MAKIAVELI")
+        if not isinstance(marketplace.get("owner"), dict) or marketplace["owner"].get("name") != "Gbemi Akadiri":
+            errors.append("Claude marketplace owner must be Gbemi Akadiri")
         plugins = marketplace.get("plugins")
         if not isinstance(plugins, list) or len(plugins) != 1:
             errors.append("Claude marketplace must expose one collection plugin")
@@ -235,15 +235,15 @@ def validate_host_wrappers(errors: list[str]) -> None:
                 errors.append("Claude marketplace plugin must point at the repository root")
             if isinstance(plugin, dict) and entry.get("version") != plugin.get("version"):
                 errors.append("Claude marketplace and plugin versions differ")
-            if not isinstance(entry.get("author"), dict) or entry["author"].get("name") != "MAKIAVELI":
-                errors.append("Claude marketplace plugin author must be MAKIAVELI")
+            if not isinstance(entry.get("author"), dict) or entry["author"].get("name") != "Gbemi Akadiri":
+                errors.append("Claude marketplace plugin author must be Gbemi Akadiri")
 
-    if "Portable Agent Skills by **MAKIAVELI**." not in (ROOT / "README.md").read_text(
+    if "I'm Gbemi Akadiri, and I made these two portable Agent Skills." not in (ROOT / "README.md").read_text(
         encoding="utf-8-sig"
     ):
-        errors.append("README public attribution must be MAKIAVELI")
-    if "Copyright 2026 MAKIAVELI" not in (ROOT / "LICENSE").read_text(encoding="utf-8-sig"):
-        errors.append("LICENSE copyright notice must be MAKIAVELI")
+        errors.append("README public attribution must be Gbemi Akadiri")
+    if "Copyright 2026 Gbemi Akadiri" not in (ROOT / "LICENSE").read_text(encoding="utf-8-sig"):
+        errors.append("LICENSE copyright notice must be Gbemi Akadiri")
 
     for name in EXPECTED_SKILLS:
         link = ROOT / ".agents" / "skills" / name
