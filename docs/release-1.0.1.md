@@ -10,7 +10,7 @@ Date: 2026-08-15
 
 ## Corrections and improvements
 
-- Public authorship, ownership, copyright, and Git attribution use **MAKIAVELI** only.
+- Public authorship, ownership, copyright, and Git attribution use **Gbemi Akadiri** only.
 - The repository README now leads with one-prompt and one-line installation paths.
 - Codex and standalone Claude installs from a checkout accept `install.py codex|claude`.
 - SITECRAFT, FOUNDRY, architecture, and portability documents now begin with a plain-language quick start.
@@ -27,8 +27,8 @@ Date: 2026-08-15
 ## Public release evidence
 
 - A fresh public clone installs SITECRAFT and FOUNDRY into a clean Codex project with the short installer form.
-- Claude Code 2.1.232 adds `makiaveli1/skills-as-systems` as a marketplace and installs exactly those two skills at plugin version 1.0.1.
-- [GitHub Actions run 31878388283](https://github.com/makiaveli1/skills-as-systems/actions/runs/31878388283) passed on the clean public root commit.
+- Claude Code 2.1.232 adds `skills-as-systems/skills-as-systems` as a marketplace and installs exactly those two skills at plugin version 1.0.1.
+- [GitHub Actions run 31878388283](https://github.com/skills-as-systems/skills-as-systems/actions/runs/31878388283) passed on the clean public root commit.
 - Both release archives pass their package regression suites, FOUNDRY scenario evaluation, and official Agent Skills validation after fresh extraction.
 - Attribution and privacy scans pass across the repository, installed copies, plugin cache, and extracted archives.
 - `sitecraft-0.3.0.zip`: `95554a9d7ad12fcdd7115af4a2b913bf4c8afe118c6d9243d7351a9b9bb5bdc9`

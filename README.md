@@ -118,6 +118,8 @@ I split each skill into six jobs that ordinary prompts tend to mix together:
 
 I only load the detailed specialist references when they're needed. My failure tests aim at plausible-looking mistakes such as unnecessary rewrites, guessed capabilities, weakened tests, unsupported visual claims, and fake completion.
 
+I also wrote two small checkers that run without a network: `sitecraft_check.py` for pages and `foundry_check.py` for test runs and receipts. They catch things like low-contrast text, missing alt text, an empty test run counted as a pass, and a receipt that claims more than its evidence shows. They only help when the agent actually runs them. They're checkers, not locks.
+
 [The architecture](docs/architecture.md) has the complete model, and [the evaluation guide](docs/evaluation.md) covers what the test suite does and doesn't prove.
 
 ## See the work, including the inconvenient results
