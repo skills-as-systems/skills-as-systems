@@ -19,7 +19,7 @@ Date: 2026-08-15
 - FOUNDRY deterministic scenario evaluation: 22 positive routes, 6 negative routes, 16 adversarial cases, and 4 artifact corruption gates passed.
 - Claude Code 2.1.232 `plugin validate`: passed for the marketplace manifest.
 - Claude Code 2.1.232 clean local marketplace add and plugin installation: passed; the isolated plugin cache contained SITECRAFT and FOUNDRY at collection version 1.0.0.
-- Claude Code 2.1.232 public GitHub marketplace add and plugin installation: passed over HTTPS from `makiaveli1/skills-as-systems`; the isolated plugin cache contained exactly SITECRAFT and FOUNDRY at collection version 1.0.0.
+- Claude Code 2.1.232 public GitHub marketplace add and plugin installation: passed over HTTPS from `skills-as-systems/skills-as-systems`; the isolated plugin cache contained exactly SITECRAFT and FOUNDRY at collection version 1.0.0.
 - GitHub Actions validation on Linux with Python 3.12: passed, including official Agent Skills validation, clean installs, both package suites, and the FOUNDRY scenario evaluator.
 
 ## Observed package state
