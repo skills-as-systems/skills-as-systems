@@ -1,0 +1,6 @@
+id,name,tags,layout,do,avoid
+editorial-calm,Editorial calm,portfolio;fashion;travel;boutique;beauty,Wide margins and one large image per section,Large type and generous space; one accent colour,Dense grids and many badges
+friendly-local,Friendly local,food;bakery;trades;local;community;health,Clear top bar with phone and hours; big photos of real work,Real photos and plain words; one clear call to action per screen,Stock photos and vague slogans
+clean-product,Clean product,software;saas;ai;b2b;professional,Headline then proof then product view then pricing,One idea per section; show the product; honest numbers,Feature walls and gradient text
+bold-event,Bold event,events;music;sport;fitness;youth,Full-bleed hero with date and ticket button,Big type and strong contrast; sticky action button,Small grey text on busy images
+trust-first,Trust first,legal;finance;clinic;consulting;charity,Plain layout with credentials and clear next steps,Named people and real credentials; plain language,Hype words and unexplained jargon
