@@ -38,6 +38,12 @@ jobs:
       - name: Test FOUNDRY
         run: python skills/foundry-engineering/run_tests.py
 
+      - name: Test the checkers
+        run: |
+          python skills/sitecraft/tests/test_checker.py
+          python skills/sitecraft/tests/test_render_check.py
+          python skills/foundry-engineering/tests/test_foundry_check.py
+
       - name: Evaluate FOUNDRY routing scenarios
         run: python skills/foundry-engineering/scripts/evaluate_scenarios.py
 
