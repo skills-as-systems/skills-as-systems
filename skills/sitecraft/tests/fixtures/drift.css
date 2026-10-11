@@ -1,0 +1,4 @@
+:root { --accent: #ff00aa; }
+body { color: #111; background: white; font-family: "Inter", sans-serif; padding: 16px; }
+.card { color: rgb(0, 68, 204); background: hsl(0, 100%, 50%); font-family: Georgia, serif; margin: 13px 1.5rem; }
+.ok { color: #111111; background: rgba(0,0,0,0.5); padding: 0.5rem; }

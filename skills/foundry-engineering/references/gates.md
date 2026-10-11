@@ -13,7 +13,9 @@ On any return, read `gate-log.json` first, say which gate you are at, continue. 
 - G4 Root cause (bugs). Fill `assets/root-cause-record-template.md` before any fix: symptom, proximate cause, root cause, contributing conditions.
 - G5 Red first. Show a regression test failing for the right reason before the fix (`scripts/foundry_check.py testrun --expect-fail`). Prototype, generated code and config may be waived with the owner's reason in `waiver`.
 - G6 Green and wider. New test passes, then focused tests, then the wider suite; save each run's output as evidence. A run that executed 0 tests never counts (`foundry_check.py testrun`). If the suite cannot run here, record a verification gap, do not claim.
+  Also run `foundry_check.py test-weakening --base <baseline>` on the diff: it flags removed assertions, added skip/xfail/only, trivially true checks, deleted test files and rewritten snapshots. Any hit fails the receipt unless the contract names it and the owner approved (`--allow-weakening "reason"`, copy the reason into the receipt).
 - G7 Two-stage review. Stage 1: does the diff match the contract (spec compliance)? Stage 2: quality and risk (behaviour, compatibility, security, migration, concurrency). Use a fresh reviewer where the host allows, else mark it self-review. Output one verdict:
+  Before the verdict run `foundry_check.py scope-drift --base <baseline> --contract contract.json`: it compares the changed paths with `surfaces.allowed`, `affected` and `forbidden`, and flags lockfile, CI config and test-file changes that the contract does not name. Both checks are heuristics on a diff, not locks; a moved or renamed assertion can slip past.
   - Ship: no open findings above LOW.
   - Revise: fixable findings; list them and the fix.
   - Block: a safety, data-loss, security or contract breach; stop and tell the owner.

@@ -1,0 +1,6 @@
+:root{--tan:#d9a066;--cream:#f4f6fb;--mute:#8a94a8}
+body{background:var(--cream);color:#1d2433}
+.btn{background:var(--tan);color:#fff}
+.note{color:var(--mute)}
+.day{background:#fff;color:#fff}
+@media (prefers-reduced-motion:reduce){.x{transition:none}}

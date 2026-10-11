@@ -67,6 +67,7 @@ Return the smallest useful package: current state, relevant rules, bounded work,
 Before step 1, state which level this run can honestly reach:
 - Level 2 (Checked): you can run the bundled scripts. Try `py -3`, `python`, `python3` (Windows) or `python3`, `python` (Mac/Linux). Run `scripts/sitecraft_check.py --help` once to prove it.
 - Level 1 (Paper): you cannot run scripts. Follow the same gates and artifacts by hand. Every claim that needs a checker is labelled UNVERIFIED (not run), and the final receipt says "Level 1: checks not executed".
+- Level 2.5 (Rendered): Level 2 plus `scripts/render_check.py` ran in a real browser (320/390/1440 px). Optional; needs Playwright. If it prints NOT RUN, stay at Level 2.
 - Level 3 (Full): Level 2 plus an enforcer add-on that you have seen block or log a step in this session. Never claim Level 3 on faith.
 Never report a higher level than you proved. Write the level into the gate log.
 

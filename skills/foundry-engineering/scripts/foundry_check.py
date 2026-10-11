@@ -2,6 +2,9 @@
 """FOUNDRY v2 deterministic checks (prototype). stdlib only, no network, no LLM.
   foundry_check.py testrun OUTPUT.txt [--expect-fail]   # parse a test run's output
   foundry_check.py receipt RECEIPT.json [--root DIR]     # cross-check a verification receipt
+  foundry_check.py test-weakening (--diff FILE | --base REF) [--repo DIR] [--allow-weakening "owner reason"]
+  foundry_check.py scope-drift (--diff FILE | --base REF) --contract CONTRACT.json [--repo DIR]
+(test-weakening and scope-drift read a unified diff; they are checkers, not locks: a renamed or moved assertion can slip past.)
 Exit 0 ok, 1 problems, 2 usage."""
 import sys, re, json, os, argparse
 
@@ -97,12 +100,88 @@ def cmd_review_packet(path, root, out):
     open(os.path.join(out, 'REVIEWER-INSTRUCTIONS.md'), 'w').write(REVIEW_INSTRUCTIONS)
     print(f'review packet written to {out} (no gate log, no builder notes)'); return 0
 
+import fnmatch, subprocess
+TEST_PATH = re.compile(r'(^|/)(tests?|__tests__|spec|specs)/|(^|/)test_[^/]*$|[._-](test|spec)\.[A-Za-z0-9]+$|_test\.[A-Za-z0-9]+$', re.I)
+SNAP_PATH = re.compile(r'(^|/)(__snapshots__|snapshots?)/|\.snap$', re.I)
+ASSERT_RE = re.compile(r'\bassert\w*\b|\bexpect\s*\(|\.should\b|\bverify\s*\(|\bt\.(?:Error|Fatal|Fail)\w*\(', re.I)
+SKIP_RE = re.compile(r'@(?:unittest\.)?skip\w*|pytest\.mark\.(?:skip|xfail)|pytest\.(?:skip|xfail)\(|\bxfail\b|\b(?:it|test|describe)\.(?:skip|only|todo)\b|\b(?:xit|xdescribe|xtest|fit|fdescribe)\s*\(|@Ignore\b|@Disabled\b|\bt\.Skip\w*\(|\bt\.skip\b', re.I)
+LOOSE_RE = re.compile(r'assertTrue\(\s*True\s*\)|assert\s+True\b|expect\([^)]*\)\.(?:toBeTruthy|toBeDefined)\(\)|\bpass\s*$')
+LOCKFILES = {'package-lock.json','yarn.lock','pnpm-lock.yaml','poetry.lock','Pipfile.lock','Cargo.lock','go.sum','Gemfile.lock','composer.lock','uv.lock'}
+CI_RE = re.compile(r'^\.github/workflows/|^\.gitlab-ci\.yml$|^\.circleci/|^Jenkinsfile$|^azure-pipelines\.ya?ml$|^\.travis\.yml$', re.I)
+
+def get_diff(a):
+    if a.diff: return open(a.diff, encoding='utf-8', errors='replace').read()
+    r = subprocess.run(['git', '-C', a.repo or '.', 'diff', '-U0', '--no-color', a.base], capture_output=True, text=True)
+    if r.returncode: raise SystemExit('git diff failed: ' + r.stderr.strip())
+    return r.stdout
+
+def parse_diff(d):
+    """-> {path: {'added': [...], 'removed': [...], 'deleted': bool, 'new': bool}}"""
+    files = {}; cur = None
+    for ln in d.splitlines():
+        m = re.match(r'diff --git a/(.*) b/(.*)$', ln)
+        if m: cur = files.setdefault(m.group(2), {'added': [], 'removed': [], 'deleted': False, 'new': False}); cur['old'] = m.group(1); continue
+        if cur is None: continue
+        if ln.startswith('deleted file mode'): cur['deleted'] = True
+        elif ln.startswith('new file mode'): cur['new'] = True
+        elif ln.startswith('+++ ') or ln.startswith('--- '): continue
+        elif ln.startswith('+'): cur['added'].append(ln[1:])
+        elif ln.startswith('-'): cur['removed'].append(ln[1:])
+    return files
+
+def cmd_test_weakening(a):
+    files = parse_diff(get_diff(a)); probs = []
+    for path, f in sorted(files.items()):
+        if SNAP_PATH.search(path) and not f['new']: probs.append(f'{path}: snapshot file rewritten (check the new snapshot is intended)')
+        if not TEST_PATH.search(path): continue
+        if f['deleted']: probs.append(f'{path}: test file deleted'); continue
+        ra = sum(1 for l in f['removed'] if ASSERT_RE.search(l)); aa = sum(1 for l in f['added'] if ASSERT_RE.search(l))
+        if ra > aa: probs.append(f'{path}: {ra} assertion line(s) removed, {aa} added (net {aa - ra})')
+        for l in f['added']:
+            if SKIP_RE.search(l): probs.append(f'{path}: skip/xfail/only added: {l.strip()[:80]}')
+            if LOOSE_RE.search(l): probs.append(f'{path}: trivially true check added: {l.strip()[:80]}')
+    if not probs: print(f'ok: {len(files)} changed file(s), no test weakening found'); return 0
+    for x in probs: print('PROBLEM:', x)
+    if a.allow_weakening:
+        print(f'ALLOWED by owner reason: {a.allow_weakening!r}. Copy this reason into the receipt and the contract.'); return 0
+    print('Test weakening found. Fail the receipt unless the contract names it and the owner approved (use --allow-weakening "reason").'); return 1
+
+def _match(path, pats):
+    for p in pats:
+        p = p.strip()
+        if not p: continue
+        if fnmatch.fnmatch(path, p) or path == p.rstrip('/') or path.startswith(p.rstrip('/') + '/'): return p
+    return None
+
+def cmd_scope_drift(a):
+    c = json.load(open(a.contract, encoding='utf-8-sig')); s = c.get('surfaces', {})
+    allowed, affected, forbidden = s.get('allowed', []), s.get('affected', []), s.get('forbidden', [])
+    files = parse_diff(get_diff(a)); probs = []; notes = []
+    for path in sorted(files):
+        base = os.path.basename(path); named = _match(path, allowed)
+        if _match(path, forbidden): probs.append(f'{path}: in the contract forbidden list'); continue
+        special = 'lockfile' if base in LOCKFILES else 'CI config' if CI_RE.search(path) else 'test file' if TEST_PATH.search(path) else ''
+        if special and not named: probs.append(f'{path}: {special} changed but not named in surfaces.allowed')
+        elif not named and not _match(path, affected): probs.append(f'{path}: outside surfaces.allowed (scope drift)')
+        elif not named: notes.append(f'{path}: only in surfaces.affected (touching it needs a reason)')
+    for n in notes: print('NOTE:', n)
+    if not probs: print(f'ok: {len(files)} changed file(s) inside the contract surfaces'); return 0
+    for x in probs: print('PROBLEM:', x)
+    return 1
+
 def main():
     ap = argparse.ArgumentParser(); sp = ap.add_subparsers(dest='c')
     a = sp.add_parser('testrun'); a.add_argument('file'); a.add_argument('--expect-fail', action='store_true')
     b = sp.add_parser('receipt'); b.add_argument('file'); b.add_argument('--root')
     p = sp.add_parser('review-packet'); p.add_argument('file'); p.add_argument('--root'); p.add_argument('--out', required=True)
+    for nm, extra in (('test-weakening', True), ('scope-drift', False)):
+        q = sp.add_parser(nm); q.add_argument('--diff'); q.add_argument('--base'); q.add_argument('--repo')
+        if extra: q.add_argument('--allow-weakening')
+        else: q.add_argument('--contract', required=True)
     n = ap.parse_args()
+    if n.c in ('test-weakening', 'scope-drift') and bool(n.diff) == bool(n.base): print('give exactly one of --diff or --base'); sys.exit(2)
+    if n.c == 'test-weakening': sys.exit(cmd_test_weakening(n))
+    if n.c == 'scope-drift': sys.exit(cmd_scope_drift(n))
     if n.c == 'testrun': sys.exit(cmd_testrun(n.file, n.expect_fail))
     if n.c == 'receipt': sys.exit(cmd_receipt(n.file, n.root))
     if n.c == 'review-packet': sys.exit(cmd_review_packet(n.file, n.root, n.out))

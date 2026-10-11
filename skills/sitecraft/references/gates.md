@@ -13,7 +13,8 @@ On any return to the work, read `gate-log.json` first, say which gate you are at
 4. Shots. Desktop, mobile and 320px screenshots of every changed page and state. No browser: say "not verified: no browser" and mark the gate `blocked` or `waived`.
 5. Fix loop. List defects, fix, re-shoot, compare. Cap at 3 rounds, then stop and ask the buyer ("stuck").
 6. Critique. Score against the fixed rubric (`evaluation-rubric.md`), by a fresh reviewer when the host allows. Self-review is labelled as such.
-7. Budget. Run `scripts/sitecraft_check.py` on the output (add `--ban` with the sheet's ban list). Record page weight, fallbacks for unsupported browsers, reduced motion and save-data, and any third-party script or telemetry and its licence.
+7. Budget. Run `scripts/sitecraft_check.py` on the output (add `--ban` with the sheet's ban list). With `--sheet design-sheet.json` (format: `assets/design-sheet.example.json`) it also flags colours and fonts that are not on the sheet (errors) and spacing off the scale (warnings); alpha colours and `var()` uses are skipped. Record page weight, fallbacks for unsupported browsers, reduced motion and save-data, and any third-party script or telemetry and its licence.
+   Optional Level 2.5: `scripts/render_check.py PAGE` renders in a real browser at 320, 390 and 1440 px (needs Playwright; axe-core via `--axe PATH`) and checks overflow, tap targets under 24px, focus after Tab, console errors and axe violations. If it cannot start it exits 3 "NOT RUN": report Level 2, not 2.5. It checks the page as loaded; it does not prove the site works for every user.
 8. Release. Release record: what shipped, level reached, open defects, what was not verified. Print the Level report.
 
 ## Fast path
