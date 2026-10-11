@@ -30,3 +30,6 @@ Trivial, reversible edit: G2 notes only (still approved), G6 focused tests, G8.
 
 ## Quick commands (names a harness may map; the text works without them)
 /map = G1. /contract = G2. /red = G5. /verify = G6 and G8. /review = G7. /checkpoint = G9. /gate-check = read the log and report the next gate.
+
+## UI and backend together
+When one change touches both skills, link the two gate logs and finish both. See [cross-skill](cross-skill.md).
