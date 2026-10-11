@@ -1,0 +1,13 @@
+id,name,mood,tags,canvas,surface,text,text2,primary,on_primary,border,error
+warm-bakery,Warm Bakery,warm friendly,food;bakery;cafe;restaurant;craft,#FFF8F0,#FBEBD9,#2B1B12,#6B4A38,#A8431A,#FFFFFF,#E6CDB5,#B3261E
+calm-clinic,Calm Clinic,calm trustworthy,health;clinic;wellness;care;medical,#F7FBFC,#E8F2F5,#10232B,#3F5963,#0B6E8A,#FFFFFF,#CADCE2,#B3261E
+legal-navy,Legal Navy,serious trustworthy,legal;finance;consulting;professional;b2b,#FFFFFF,#F2F4F8,#101828,#475467,#1D3A8A,#FFFFFF,#D0D5DD,#B42318
+fresh-garden,Fresh Garden,fresh natural,garden;plants;organic;eco;food,#F8FBF5,#EAF3E3,#14230F,#455C3B,#2F6B2A,#FFFFFF,#CFE0C5,#B3261E
+studio-mono,Studio Mono,minimal editorial,portfolio;agency;design;photography;creative,#FAFAFA,#F0F0F0,#111111,#555555,#111111,#FFFFFF,#DDDDDD,#B3261E
+night-tech,Night Tech,dark technical,software;saas;developer;ai;tech,#0E1116,#171C24,#E8ECF1,#A9B3C0,#6CB6FF,#07121F,#2A3342,#FF8A80
+sunset-event,Sunset Event,energetic bold,events;music;nightlife;festival;entertainment,#1A1024,#26173A,#FBF3FF,#CDB8E3,#FFB347,#1A1024,#3F2A5C,#FF8A80
+sand-travel,Sand Travel,relaxed airy,travel;hotel;hospitality;tourism;home,#FFFCF5,#F5EEDD,#2A2418,#675A3F,#B45F06,#FFFFFF,#E3D8BE,#B3261E
+sage-boutique,Sage Boutique,soft refined,boutique;fashion;beauty;lifestyle;retail,#FAFBF7,#EEF1E8,#1F2A1B,#596653,#4F6B45,#FFFFFF,#D6DCCB,#B3261E
+bold-sport,Bold Sport,bold high-energy,sport;fitness;gym;outdoor;youth,#FFFFFF,#F1F5F9,#0B1220,#475569,#C2410C,#FFFFFF,#CBD5E1,#B91C1C
+rose-community,Rose Community,warm caring,nonprofit;charity;community;education;family,#FFF9FA,#FCEBEE,#2B1217,#6B3A44,#B3234F,#FFFFFF,#EFCDD4,#B3261E
+slate-trade,Slate Trade,sturdy practical,trades;construction;repair;logistics;local,#F8F9FA,#E9ECEF,#16191C,#495057,#B45309,#FFFFFF,#CED4DA,#B42318
