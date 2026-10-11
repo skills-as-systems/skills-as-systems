@@ -1,0 +1,5 @@
+.btn{color:#999;background:#aaa;transition:all .3s cubic-bezier(.68,-0.55,.27,1.55)}
+a:focus{outline:none}
+.small{font-size:10px}
+@keyframes spin{to{transform:rotate(1turn)}}
+.s{animation:spin 1s infinite}
