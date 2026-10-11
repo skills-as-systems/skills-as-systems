@@ -1,7 +1,7 @@
 {
   "name": "skills-as-systems",
   "owner": {
-    "name": "MAKIAVELI"
+    "name": "Gbemi Akadiri"
   },
   "metadata": {
     "description": "A collection of portable skills designed as tested operating systems for judgment."
@@ -13,10 +13,10 @@
       "description": "SITECRAFT and FOUNDRY as one portable Claude Code plugin.",
       "version": "1.1.0",
       "author": {
-        "name": "MAKIAVELI"
+        "name": "Gbemi Akadiri"
       },
-      "homepage": "https://github.com/makiaveli1/skills-as-systems",
-      "repository": "https://github.com/makiaveli1/skills-as-systems",
+      "homepage": "https://github.com/skills-as-systems/skills-as-systems",
+      "repository": "https://github.com/skills-as-systems/skills-as-systems",
       "license": "Apache-2.0",
       "category": "development",
       "tags": [

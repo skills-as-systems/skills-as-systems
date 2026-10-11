@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "description": "Portable, evidence-led skills for web experience design and software engineering.",
   "author": {
-    "name": "MAKIAVELI"
+    "name": "Gbemi Akadiri"
   },
-  "homepage": "https://github.com/makiaveli1/skills-as-systems",
-  "repository": "https://github.com/makiaveli1/skills-as-systems",
+  "homepage": "https://github.com/skills-as-systems/skills-as-systems",
+  "repository": "https://github.com/skills-as-systems/skills-as-systems",
   "license": "Apache-2.0",
   "keywords": [
     "agent-skills",

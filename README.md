@@ -1,16 +1,16 @@
 # Skills as Systems
 
-[![Validate](https://github.com/makiaveli1/skills-as-systems/actions/workflows/validate.yml/badge.svg)](https://github.com/makiaveli1/skills-as-systems/actions/workflows/validate.yml)
+[![Validate](https://github.com/skills-as-systems/skills-as-systems/actions/workflows/validate.yml/badge.svg)](https://github.com/skills-as-systems/skills-as-systems/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Portable Agent Skills by **MAKIAVELI**.
+I'm Gbemi Akadiri, and I made these two portable Agent Skills.
 
-- **SITECRAFT** helps agents plan, design, build, repair, audit, and release web experiences.
-- **FOUNDRY** helps agents understand, change, debug, review, test, and recover software systems.
+- **SITECRAFT** is my skill for planning, designing, building, repairing, auditing, and releasing web experiences.
+- **FOUNDRY** is my skill for understanding, changing, debugging, reviewing, testing, and recovering software systems.
 
 > A skill should not be a giant prompt. It should be a small, testable operating system for judgment.
 
-Both skills follow the open [Agent Skills specification](https://agentskills.io/specification). They do not require Codex, Claude Code, or any particular model provider.
+Both skills follow the open [Agent Skills specification](https://agentskills.io/specification). I built them so they don't need Codex, Claude Code, or any particular model provider.
 
 ## Install in under a minute
 
@@ -19,7 +19,7 @@ Both skills follow the open [Agent Skills specification](https://agentskills.io/
 Paste this into a capable coding agent:
 
 ```text
-Install SITECRAFT and FOUNDRY from https://github.com/makiaveli1/skills-as-systems for this harness at user scope. Prefer the harness's native skill or plugin installer. Otherwise clone the repository and use its portable installer. Verify that both skills are discoverable, report their exact installed paths, and tell me whether a reload or restart is needed. Do not add tool permissions or configure external services.
+Install SITECRAFT and FOUNDRY from https://github.com/skills-as-systems/skills-as-systems for this harness at user scope. Prefer the harness's native skill or plugin installer. Otherwise clone the repository and use its portable installer. Verify that both skills are discoverable, report their exact installed paths, and tell me whether a reload or restart is needed. Do not add tool permissions or configure external services.
 ```
 
 ### Codex
@@ -27,13 +27,13 @@ Install SITECRAFT and FOUNDRY from https://github.com/makiaveli1/skills-as-syste
 Paste this into Codex:
 
 ```text
-$skill-installer Install sitecraft and foundry-engineering from https://github.com/makiaveli1/skills-as-systems for my user account. Verify both appear in the skill picker or /skills, report their installed paths, and tell me if Codex needs a restart.
+$skill-installer Install sitecraft and foundry-engineering from https://github.com/skills-as-systems/skills-as-systems for my user account. Verify both appear in the skill picker or /skills, report their installed paths, and tell me if Codex needs a restart.
 ```
 
 Or use one terminal line:
 
 ```bash
-git clone --depth 1 https://github.com/makiaveli1/skills-as-systems.git && python3 skills-as-systems/scripts/install.py codex
+git clone --depth 1 https://github.com/skills-as-systems/skills-as-systems.git && python3 skills-as-systems/scripts/install.py codex
 ```
 
 Codex loads user skills from `$HOME/.agents/skills`. See the official [Codex skills documentation](https://developers.openai.com/codex/skills/).
@@ -43,13 +43,13 @@ Codex loads user skills from `$HOME/.agents/skills`. See the official [Codex ski
 Use one terminal line:
 
 ```bash
-claude plugin marketplace add makiaveli1/skills-as-systems && claude plugin install skills-as-systems@skills-as-systems
+claude plugin marketplace add skills-as-systems/skills-as-systems && claude plugin install skills-as-systems@skills-as-systems
 ```
 
 Or paste this into Claude Code:
 
 ```text
-Add makiaveli1/skills-as-systems as a plugin marketplace, install the skills-as-systems plugin, reload plugins if requested, and verify that sitecraft and foundry-engineering are available.
+Add skills-as-systems/skills-as-systems as a plugin marketplace, install the skills-as-systems plugin, reload plugins if requested, and verify that sitecraft and foundry-engineering are available.
 ```
 
 See the official [Claude Code marketplace documentation](https://code.claude.com/docs/en/plugin-marketplaces).
@@ -107,7 +107,7 @@ Use both when a task changes a web experience and the software system behind it.
 
 ## What makes these different
 
-Each skill separates six jobs that ordinary prompts often mix together:
+I split each skill into six jobs that ordinary prompts tend to mix together:
 
 1. **Route:** decide whether the skill applies and which part is needed.
 2. **Understand:** inspect the real project or problem before producing work.
@@ -116,13 +116,13 @@ Each skill separates six jobs that ordinary prompts often mix together:
 5. **Verify:** match every completion claim to appropriate evidence.
 6. **Continue:** leave compact state another agent or human can safely resume.
 
-Detailed specialist references load only when needed. Failure tests target plausible-looking mistakes such as unnecessary rewrites, guessed capabilities, weakened tests, unsupported visual claims, and fake completion.
+I only load the detailed specialist references when they're needed. My failure tests aim at plausible-looking mistakes such as unnecessary rewrites, guessed capabilities, weakened tests, unsupported visual claims, and fake completion.
 
-Read [the architecture](docs/architecture.md) for the complete model or [the evaluation guide](docs/evaluation.md) for what the test suite does and does not prove.
+[The architecture](docs/architecture.md) has the complete model, and [the evaluation guide](docs/evaluation.md) covers what the test suite does and doesn't prove.
 
 ## See the work, including the inconvenient results
 
-The repository includes frozen prompts, seeds, final projects, screenshots,
+I've included the frozen prompts, seeds, final projects, screenshots,
 deterministic evaluators, blind review, and machine-readable receipts from fresh
 paired Codex runs.
 
@@ -134,10 +134,10 @@ paired Codex runs.
 
 ![SITECRAFT TIDEGLASS desktop output](benchmarks/sitecraft-tideglass/evidence/with-sitecraft/desktop-1440x1000.png)
 
-These examples are not a leaderboard and do not prove universal uplift. They do
-show how to test skills without hiding a strong baseline. The first findings led
-to smaller SITECRAFT artifacts and stronger FOUNDRY package regressions. Read the
-[benchmark method and limitations](benchmarks/).
+These examples aren't a leaderboard, and they don't prove the skills help everywhere. They
+show how I test skills without hiding a strong baseline. The first findings led
+me to make the SITECRAFT artifacts smaller and strengthen the FOUNDRY package regressions. The
+[benchmark method and limitations](benchmarks/) are written up there.
 
 ## Portable core, optional adapters
 
@@ -146,7 +146,7 @@ The canonical packages live under `skills/`. Their doctrine and references are p
 - `agents/openai.yaml` adds optional Codex presentation metadata.
 - `.claude-plugin/` packages both skills for Claude Code distribution.
 
-None of these files grants permission to use tools, write files, deploy, spend money, or access accounts. The receiving host and user remain the authority.
+None of these files give permission to use tools, write files, deploy, spend money, or access accounts. The receiving host and user remain the authority.
 
 ## Validate the repository
 
@@ -172,12 +172,12 @@ scripts/                Safe installer and repository validation
 
 ## Contributing and security
 
-Contributions should make a skill more correct, portable, discriminating, verifiable, or context-efficient. See [CONTRIBUTING.md](CONTRIBUTING.md).
+I'd like contributions to make a skill more correct, portable, discriminating, verifiable, or context-efficient. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Report security problems using [SECURITY.md](SECURITY.md). Do not publish credentials, private project data, or production artifacts in an issue.
 
 ## License
 
-Copyright 2026 **MAKIAVELI**.
+Copyright 2026 **Gbemi Akadiri**.
 
 Licensed under the [Apache License 2.0](LICENSE).
