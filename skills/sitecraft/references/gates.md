@@ -3,7 +3,7 @@
 Each gate has a stop rule, a required artifact and one entry in the gate log (`assets/gate-log.template.json`, copy it to `gate-log.json` in the project at Gate 0). A gate is `pending`, `done`, `waived` (with the buyer's reason in `waiver`) or `blocked`. The log makes skipping visible. It does not stop a determined model from skipping; it is a checker, not a lock.
 
 ## Re-entry
-On any return to the work, read `gate-log.json` first, say which gate you are at, then continue. At the end of every gate: run the checker if you can, update the log, name the next gate. State lives in the file so it survives compaction and restarts.
+On any return to the work, read `gate-log.json` first, say which gate you are at, then continue. At the end of every gate: run the checker if you can, update the log, name the next gate. State lives in the file so it survives compaction and restarts. `scripts/gate_log.py validate gate-log.json` checks the log (done needs evidence, waived needs a reason, no gate done while an earlier one is pending, level claims match capabilities); `gate_log.py report a.json b.json` shows where the run is and which gates were skipped, waived or blocked across runs.
 
 ## Gates
 0. Intake. Fill `assets/PRODUCT.template.md` as PRODUCT.md (who, visitor jobs, constraints, voice). Stop until the buyer has answered or waived the open questions. Also record capabilities (shell, browser) and the level in the log.
