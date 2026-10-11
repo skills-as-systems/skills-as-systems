@@ -7,7 +7,7 @@ On any return to the work, read `gate-log.json` first, say which gate you are at
 
 ## Gates
 0. Intake. Fill `assets/PRODUCT.template.md` as PRODUCT.md (who, visitor jobs, constraints, voice). Stop until the buyer has answered or waived the open questions. Also record capabilities (shell, browser) and the level in the log.
-1. Design sheet. Fill `assets/DESIGN.template.md` as DESIGN.md: tokens as roles, theme strategy, type, dials (density, motion, variance), quality bar, ban list, page overrides. The buyer approves it; log the approval quote and date. Libraries and examples propose; the buyer's sheet decides.
+1. Design sheet. Fill `assets/DESIGN.template.md` as DESIGN.md: tokens as roles, theme strategy, type, dials (density, motion, variance), quality bar, ban list, page overrides. The buyer approves it; log the approval quote and date. Libraries and examples propose; the buyer's sheet decides. `scripts/design_search.py propose --brief "..." --out DIR` turns a brief into 2 or 3 starter directions (contrast-checked palettes, open-licence font pairings, layout notes) as design-sheet files the buyer can approve, change or reject; `search` and `verify` are there too. Weak matches are labelled, and the library is small: it is a starting point, not taste.
 2. Direction. Show two structurally different layout sketches. The buyer picks one. Log the pick.
 3. Build in slices. One slice at a time, each checked against the sheet before the next. Follow the matching section of [stack rules](stack-rules.md).
 4. Shots. Desktop, mobile and 320px screenshots of every changed page and state. No browser: say "not verified: no browser" and mark the gate `blocked` or `waived`.
