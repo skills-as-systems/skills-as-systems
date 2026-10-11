@@ -1,0 +1,18 @@
+{
+  "skill": "foundry-engineering",
+  "run_id": "",
+  "level": 1,
+  "capabilities": {"shell": false, "tests": false, "browser": false, "subagents": false, "enforcer": false},
+  "gates": [
+    {"gate": "G0", "name": "intake",     "artifact": "capability report",        "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G1", "name": "map",        "artifact": "system map",               "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G2", "name": "contract",   "artifact": "approved change contract", "status": "pending", "evidence": "owner approval quote + date", "waiver": ""},
+    {"gate": "G3", "name": "isolate",    "artifact": "branch/worktree + baseline run", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G4", "name": "root-cause", "artifact": "root-cause record (bugs)", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G5", "name": "red-first",  "artifact": "failing test output",      "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G6", "name": "green",      "artifact": "passing runs saved as evidence", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G7", "name": "review",     "artifact": "two-stage review + Ship/Revise/Block", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G8", "name": "claims",     "artifact": "verification receipt",     "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": "G9", "name": "checkpoint", "artifact": "continuation record",      "status": "pending", "evidence": "", "waiver": ""}
+  ]
+}
