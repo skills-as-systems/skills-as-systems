@@ -1,0 +1,10 @@
+id,display,body,mood,tags,licence,notes
+inter-solo,Inter,Inter,neutral modern,software;saas;professional;clinic;b2b,SIL OFL 1.1,One family; use weights 400/600/700.
+serif-warm,Fraunces,Source Sans 3,warm crafted,food;bakery;craft;boutique;hospitality,SIL OFL 1.1,Serif headings with a plain sans body.
+editorial,Playfair Display,Source Sans 3,editorial refined,fashion;beauty;travel;portfolio;boutique,SIL OFL 1.1,High contrast display; keep headings large and few.
+friendly-round,Nunito Sans,Nunito Sans,friendly approachable,community;family;education;charity;health,SIL OFL 1.1,Soft and readable at small sizes.
+tech-grotesk,Space Grotesk,IBM Plex Sans,technical,software;ai;developer;saas;agency,SIL OFL 1.1,Pair with IBM Plex Mono for code.
+classic-serif,Lora,Source Sans 3,classic trustworthy,legal;finance;consulting;education;professional,SIL OFL 1.1,Serif body works for long reading.
+bold-poster,Poppins,Inter,bold energetic,events;sport;fitness;music;youth,SIL OFL 1.1,Use heavy weights for headings only.
+clean-geometric,DM Sans,DM Sans,clean minimal,portfolio;design;photography;retail;lifestyle,SIL OFL 1.1,One family with optical sizes.
+sturdy-sans,Work Sans,Work Sans,practical sturdy,trades;construction;logistics;local;repair,SIL OFL 1.1,Good at small sizes and in bold.
