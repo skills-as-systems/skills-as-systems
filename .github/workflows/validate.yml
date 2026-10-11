@@ -45,6 +45,7 @@ jobs:
           python skills/foundry-engineering/tests/test_foundry_check.py
           python skills/sitecraft/tests/test_gate_log.py
           python skills/sitecraft/tests/test_design_search.py
+          python tests/mcp/test_mcp_server.py
           python skills/foundry-engineering/tests/test_gate_log.py
 
       - name: Evaluate FOUNDRY routing scenarios
