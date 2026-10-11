@@ -1,0 +1,1 @@
+{"checks": [{"check_id": "c1", "claim_ids": ["a"], "kind": "focused", "outcome": "passed", "evidence_ref": "green.txt", "boundary": "real"}], "claims": [{"claim_id": "a", "status": "TESTED", "evidence_ids": ["c1"], "limitations": []}], "verdict": "passed", "review_provenance": [{"kind": "automated"}]}
