@@ -1,0 +1,3 @@
+:root{--ink:#264653;--sand:#f2e8cf}
+body{background:var(--sand);color:var(--ink)}
+.btn{background:var(--ink);color:#fff}
