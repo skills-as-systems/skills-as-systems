@@ -122,4 +122,4 @@ A packet can remain unchanged across a simple conversational handoff if the unde
 
 Use workspace-relative references where possible. Do not hard-code one user's home directory, one operating system path separator, one browser, or one shell into the portable packet.
 
-PC Bridge may generate richer integrity-protected continuation context when available, but the SITECRAFT Handoff Packet remains understandable without PC Bridge. Other hosts may generate or consume the same JSON using ordinary file or chat capabilities.
+Any host may generate or consume the same JSON using ordinary file or chat capabilities.

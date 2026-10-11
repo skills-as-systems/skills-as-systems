@@ -19,7 +19,6 @@ REQUIRED_FILES = {
     "VERSION",
     "agents/openai.yaml",
     "pyproject.toml",
-    "pc-bridge.skill.json",
     "scripts/validate_artifact.py",
     "scripts/evaluate_scenarios.py",
     "scripts/validate_skill.py",
@@ -40,7 +39,7 @@ REQUIRED_FILES = {
     "tests/evaluation-cases.json",
     "tests/test_package.py",
     "examples/scenario-walkthroughs.md",
-    "bridge_v2_tests.py",
+    "run_tests.py",
 }
 EXPECTED_WORKFLOWS = {
     "foundry-safe-change": ["understand-contract", "implement-bounded", "verify-challenge", "close-continue"],
@@ -161,57 +160,10 @@ def validate_version_metadata(errors: list[str]) -> None:
     for fragment in (
         'name = "foundry-engineering-skill"',
         f'version = "{VERSION}"',
-        'test_entry = "bridge_v2_tests.py"',
+        'test_entry = "run_tests.py"',
     ):
         if fragment not in text:
             errors.append(f"pyproject.toml missing: {fragment}")
-
-
-def validate_manifest(errors: list[str]) -> None:
-    manifest = load_json("pc-bridge.skill.json")
-    if manifest.get("schema_version") != "1.1":
-        errors.append("pc-bridge.skill.json schema_version must be 1.1")
-    if manifest.get("version") != VERSION:
-        errors.append(f"pc-bridge.skill.json version must be {VERSION}")
-    if "any" not in manifest.get("hosts", []):
-        errors.append("pc-bridge.skill.json must support host 'any'")
-    if manifest.get("requires") or manifest.get("conflicts"):
-        errors.append("portable v1 must not require or conflict with another skill")
-    if not 16 <= len(manifest.get("intents", [])) <= 24:
-        errors.append("manifest intents must stay between 16 and 24")
-    if len(manifest.get("negative_triggers", [])) < 6:
-        errors.append("manifest needs at least six negative triggers")
-    hints = manifest.get("reference_hints", [])
-    if not 16 <= len(hints) <= 24:
-        errors.append("manifest reference_hints must stay between 16 and 24")
-    for index, hint in enumerate(hints):
-        if not hint.get("terms") or not hint.get("paths"):
-            errors.append(f"reference hint {index} lacks terms or paths")
-        if len(hint.get("paths", [])) > 5:
-            errors.append(f"reference hint {index} exceeds five paths")
-        for selector in hint.get("paths", []):
-            if not selector_exists(selector):
-                errors.append(f"manifest selector does not exist: {selector}")
-
-    workflows = manifest.get("workflows", [])
-    found_workflows = {workflow.get("id"): workflow for workflow in workflows}
-    if set(found_workflows) != set(EXPECTED_WORKFLOWS):
-        errors.append(f"unexpected workflow IDs: {sorted(found_workflows)}")
-        return
-    for workflow_id, expected_stages in EXPECTED_WORKFLOWS.items():
-        workflow = found_workflows[workflow_id]
-        stages = workflow.get("stages", [])
-        if [stage.get("id") for stage in stages] != expected_stages:
-            errors.append(f"workflow {workflow_id} stages are missing or out of order")
-        for stage in stages:
-            if not selector_exists(stage.get("artifact_schema", "")):
-                errors.append(f"workflow schema does not exist: {stage.get('artifact_schema')}")
-            required_references = stage.get("required_references", [])
-            if len(required_references) > stage.get("max_references", 0):
-                errors.append(f"workflow stage {stage.get('id')} exceeds max_references")
-            for selector in required_references:
-                if not selector_exists(selector):
-                    errors.append(f"workflow reference does not exist: {selector}")
 
 
 def validate_artifacts(errors: list[str]) -> None:
@@ -350,10 +302,6 @@ def validate_governing_content(errors: list[str]) -> None:
     ):
         if phrase.casefold() not in failure_text.casefold():
             errors.append(f"failure-tests.md missing adversarial surface: {phrase}")
-    bridge_text = (ROOT / "references" / "pc-bridge-integration.md").read_text(encoding="utf-8-sig")
-    for phrase in ("FOUNDRY remains complete without PC Bridge", "PC Bridge owns", "permissions"):
-        if phrase not in bridge_text:
-            errors.append(f"PC Bridge adapter missing boundary: {phrase}")
     research_text = (ROOT / "references" / "research-basis.md").read_text(encoding="utf-8-sig")
     for source in ("SWE-bench", "RepoCoder", "NIST SP 800-218", "Google SRE", "Model Context Protocol"):
         if source not in research_text:
@@ -368,7 +316,6 @@ def validate() -> list[str]:
     validate_skill_md(errors)
     validate_openai_yaml(errors)
     validate_version_metadata(errors)
-    validate_manifest(errors)
     validate_artifacts(errors)
     validate_test_matrices(errors)
     validate_context_and_portability(errors)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Skill Fabric-compatible entry point for the FOUNDRY package tests."""
+"""Test entry point for the FOUNDRY package tests."""
 
 from __future__ import annotations
 

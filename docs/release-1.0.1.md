@@ -10,7 +10,7 @@ Date: 2026-08-15
 
 ## Corrections and improvements
 
-- Public authorship, ownership, copyright, PC Bridge, and Git attribution use **MAKIAVELI** only.
+- Public authorship, ownership, copyright, and Git attribution use **MAKIAVELI** only.
 - The repository README now leads with one-prompt and one-line installation paths.
 - Codex and standalone Claude installs from a checkout accept `install.py codex|claude`.
 - SITECRAFT, FOUNDRY, architecture, and portability documents now begin with a plain-language quick start.

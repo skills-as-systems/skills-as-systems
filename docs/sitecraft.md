@@ -136,10 +136,6 @@ The skill rejects:
 
 The compact core is small enough for both hosts and uses direct relative references. Codex receives optional interface metadata. Claude Code receives the same core through the repository plugin or a standalone skill directory. Neither host adapter grants browser, file, provider, deployment, or spending authority.
 
-## PC Bridge teaser
-
-With PC Bridge, SITECRAFT can gain guarded project targeting, rollback, durable missions, capability discovery, evidence and provenance, staged verification, and compact continuation. SITECRAFT still owns web-experience knowledge; PC Bridge owns authority, effects, and canonical execution state.
-
 ## Package map
 
 - `skills/sitecraft/SKILL.md` — compact doctrine and operating route.
@@ -148,6 +144,6 @@ With PC Bridge, SITECRAFT can gain guarded project targeting, rollback, durable 
 - `assets/` — blank templates and ledgers.
 - `examples/` — validated neutral examples.
 - `scripts/` — package, artifact, and workspace validation.
-- `tests/` and `bridge_v2_tests.py` — routing, mutation, portability, and regression coverage.
+- `tests/` and `run_tests.py` — routing, mutation, portability, and regression coverage.
 
 SITECRAFT's current public package deliberately excludes the prior development `build/` tree, browser profiles, logs, generated forward-test sites, showcases, and active provider adapters. That reduces the canonical package from hundreds of megabytes to the actual runtime system.

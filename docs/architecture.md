@@ -215,19 +215,6 @@ The skills distinguish:
 
 Promotion requires evidence, scope, counterexample risk, and review. One successful project does not rewrite the public skill.
 
-## PC Bridge direction
-
-PC Bridge is an optional enhancement layer under development by MAKIAVELI. It explores the control-plane side of the architecture: approved projects, durable Missions and Goals, bounded WorkAssignments and WorkerRuns, compiled context, evidence and effects, explicit authority, coordination, workboard views, verification, and continuity.
-
-The boundary is intentional:
-
-```text
-portable skill = knowledge + procedure
-PC Bridge      = project boundary + authority + effects + durable work state
-```
-
-This repository includes optional PC Bridge manifests and references where useful, but no PC Bridge dependency or permission claim.
-
 ## Anti-patterns
 
 The architecture resists:

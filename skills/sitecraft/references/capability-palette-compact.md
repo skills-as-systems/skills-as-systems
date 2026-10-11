@@ -6,7 +6,7 @@ Use this when a website may need consequential browser APIs, animation libraries
 
 **Runtime Capability Plan** — belongs to the website. Store material decisions in optional `implementation.capability_plan` in the Experience Contract.
 
-**Host Capability Profile** — belongs to the current ChatGPT, Claude, Codex, PC Bridge, generic MCP, CI, or other agent environment. Re-discover it after every handoff; never carry permissions between hosts.
+**Host Capability Profile** — belongs to the current ChatGPT, Claude, Codex, generic MCP, CI, or other agent environment. Re-discover it after every handoff; never carry permissions between hosts.
 
 For the host, mark project inspection, bounded writes/rollback, tests, preview, browser control, screenshots, recordings, media inspection, current-source research, persistence, specialist review, and deployment as `confirmed`, `unavailable`, or `unknown`.
 

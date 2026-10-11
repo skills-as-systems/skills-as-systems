@@ -10,7 +10,7 @@ Portable Agent Skills by **MAKIAVELI**.
 
 > A skill should not be a giant prompt. It should be a small, testable operating system for judgment.
 
-Both skills follow the open [Agent Skills specification](https://agentskills.io/specification). They do not require PC Bridge, Codex, Claude Code, or any particular model provider.
+Both skills follow the open [Agent Skills specification](https://agentskills.io/specification). They do not require Codex, Claude Code, or any particular model provider.
 
 ## Install in under a minute
 
@@ -145,15 +145,8 @@ The canonical packages live under `skills/`. Their doctrine and references are p
 
 - `agents/openai.yaml` adds optional Codex presentation metadata.
 - `.claude-plugin/` packages both skills for Claude Code distribution.
-- `pc-bridge.skill.json` describes optional PC Bridge routing and staged validation.
 
 None of these files grants permission to use tools, write files, deploy, spend money, or access accounts. The receiving host and user remain the authority.
-
-## A glimpse of PC Bridge
-
-**MAKIAVELI** is also developing **PC Bridge**, an optional control plane for serious agent work. The idea is simple: skills provide domain knowledge and procedure; PC Bridge provides guarded project boundaries, durable work identity, compiled context, authority, effects, evidence, coordination, verification, and continuity.
-
-PC Bridge is not required by SITECRAFT or FOUNDRY, and this brief description is not an API stability promise.
 
 ## Validate the repository
 

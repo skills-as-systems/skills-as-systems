@@ -158,10 +158,6 @@ FOUNDRY rejects:
 
 FOUNDRY's description front-loads substantial engineering triggers, and its compact router points directly to the smallest reference packet. Codex interface metadata is optional. Claude Code receives the same canonical package through the plugin or standalone directory. No host-specific tool list is embedded in the core.
 
-## PC Bridge teaser
-
-PC Bridge can strengthen exact project targeting, guarded edits, worktrees, Missions and Goals, bounded WorkAssignments and WorkerRuns, compiled context, evidence and effects, coordination, workboards, verification, and continuity. FOUNDRY supplies engineering knowledge and procedure; PC Bridge owns authority, execution effects, and canonical work state.
-
 ## Package map
 
 - `skills/foundry-engineering/SKILL.md` — doctrine, routing, and core engineering loop.
@@ -170,4 +166,4 @@ PC Bridge can strengthen exact project targeting, guarded edits, worktrees, Miss
 - `assets/` — conservative blank templates.
 - `examples/` — validated examples and scenario walkthroughs.
 - `scripts/` — package, artifact, and scenario validation.
-- `tests/` and `bridge_v2_tests.py` — routing, mutation, authority, evidence, and regression coverage.
+- `tests/` and `run_tests.py` — routing, mutation, authority, evidence, and regression coverage.

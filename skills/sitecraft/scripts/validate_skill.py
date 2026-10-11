@@ -18,7 +18,6 @@ REQUIRED_FILES = {
     "VERSION",
     "pyproject.toml",
     "agents/openai.yaml",
-    "pc-bridge.skill.json",
     "schemas/experience-contract.schema.json",
     "schemas/sitecraft-review.schema.json",
     "schemas/sitecraft-handoff.schema.json",
@@ -76,11 +75,10 @@ REQUIRED_FILES = {
     "references/creative-dna-reference-analysis.md",
     "references/interactive-generated-motion.md",
     "references/minimax-h3-video.md",
-    "references/pc-bridge-integration-upgrade.md",
     "scripts/create_workspace.py",
     "scripts/validate_artifact.py",
     "tests/test_new_reference_modules.py",
-    "bridge_v2_tests.py",
+    "run_tests.py",
 }
 
 
@@ -194,54 +192,11 @@ def validate_version_metadata(errors: list[str]) -> None:
         required_fragments = [
             'name = "sitecraft-skill"',
             'version = "0.3.1"',
-            'test_entry = "bridge_v2_tests.py"',
+            'test_entry = "run_tests.py"',
         ]
         for fragment in required_fragments:
             if fragment not in text:
                 errors.append(f"pyproject.toml missing: {fragment}")
-
-
-def validate_manifest(errors: list[str]) -> None:
-    try:
-        manifest = load_json("pc-bridge.skill.json")
-    except ValidationError as exc:
-        errors.append(str(exc))
-        return
-
-    if manifest.get("schema_version") != "1.1":
-        errors.append("pc-bridge.skill.json schema_version must be 1.1")
-    if manifest.get("version") != "0.3.1":
-        errors.append("pc-bridge.skill.json version must be 0.3.1")
-    if "any" not in manifest.get("hosts", []):
-        errors.append("pc-bridge.skill.json must support host 'any'")
-
-    for hint in manifest.get("reference_hints", []):
-        for selector in hint.get("paths", []):
-            if not resolve_selector(selector).is_file():
-                errors.append(f"Manifest reference does not exist: {selector}")
-
-    workflows = manifest.get("workflows", [])
-    if [item.get("id") for item in workflows] != ["sitecraft-full-experience"]:
-        errors.append("Expected one sitecraft-full-experience workflow")
-        return
-
-    expected_stages = [
-        "frame-map",
-        "compose-choreograph",
-        "build-observe",
-        "harden-release",
-    ]
-    stages = workflows[0].get("stages", [])
-    if [stage.get("id") for stage in stages] != expected_stages:
-        errors.append("SITECRAFT workflow stages are missing or out of order")
-
-    for stage in stages:
-        schema_path = stage.get("artifact_schema", "")
-        if not (ROOT / schema_path).is_file():
-            errors.append(f"Workflow schema does not exist: {schema_path}")
-        for selector in stage.get("required_references", []):
-            if not resolve_selector(selector).is_file():
-                errors.append(f"Workflow reference does not exist: {selector}")
 
 
 def validate_json_artifacts(errors: list[str]) -> None:
@@ -407,17 +362,6 @@ def validate_workspace_isolation(errors: list[str]) -> None:
                 f"Mutable workspace must not live at skill root: {name}; use build/forward-tests or a sibling project"
             )
 
-    try:
-        manifest = load_json("pc-bridge.skill.json")
-    except ValidationError:
-        return
-    for hint in manifest.get("reference_hints", []):
-        for selector in hint.get("paths", []):
-            base = selector.split("#", 1)[0].replace("\\", "/")
-            first = base.split("/", 1)[0].casefold()
-            if first in MUTABLE_WORKSPACE_PARTS:
-                errors.append(f"Manifest must not route to mutable workspace content: {selector}")
-
 
 def validate_platform_portability(errors: list[str]) -> None:
     machine_path_patterns = [
@@ -484,7 +428,6 @@ def validate() -> list[str]:
     if (ROOT / "agents/openai.yaml").is_file():
         validate_openai_yaml(errors)
     validate_version_metadata(errors)
-    validate_manifest(errors)
     validate_json_artifacts(errors)
     validate_workspace_isolation(errors)
     validate_platform_portability(errors)

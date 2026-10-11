@@ -56,7 +56,6 @@ The portable core assumes only that a capable agent can read the supplied text. 
 - network access;
 - a logged-in account;
 - permission to write or publish;
-- PC Bridge.
 
 When a capability is missing, the skill reports the resulting limitation and can produce a bounded packet for another host or human.
 
@@ -69,8 +68,6 @@ The repository separates three concerns:
 | Portable doctrine and references | `skills/<name>/` | No provider-only authority or invocation behavior |
 | Codex interface metadata | `skills/<name>/agents/openai.yaml` | Presentation and invocation policy only |
 | Claude distribution | `.claude-plugin/` | Marketplace and plugin packaging only |
-
-PC Bridge manifests live in each skill because they describe optional routing and staged validation, but the skills do not require PC Bridge to operate.
 
 Repository documentation, release notes, development fixtures, captures, generated sites, browser profiles, and private workspaces stay outside canonical skill directories.
 
@@ -100,7 +97,7 @@ The compact cores also stay below Claude's recommended `SKILL.md` size and compa
 
 Copy a complete directory from `skills/` into the host's configured skill location. The package name must remain the same as the frontmatter `name`.
 
-If the host does not understand `agents/openai.yaml` or `pc-bridge.skill.json`, it can ignore them. The operating instructions remain in `SKILL.md` and relative resources.
+If the host does not understand `agents/openai.yaml`, it can ignore it. The operating instructions remain in `SKILL.md` and relative resources.
 
 ## Installer behavior
 

@@ -36,7 +36,6 @@ Date: 2026-08-15
 
 - Model-level implicit activation across every Codex and Claude model/version.
 - Behavioral quality across the complete representative scenario catalog.
-- PC Bridge validation against a public release commit.
 - Windows-specific host execution beyond path-neutral code and temporary directory tests.
 - Real browser, audio, deployment, production security, and performance claims, which remain task-specific.
 

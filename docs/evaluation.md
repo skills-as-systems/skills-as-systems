@@ -164,7 +164,6 @@ It does not by itself prove:
 - every Codex or Claude model will route identically;
 - visual quality in a real browser;
 - production security, performance, or reliability;
-- PC Bridge behavior in an unavailable runtime;
 - absence of all legal, cultural, or operational risk.
 
 Those claims require their own observations, reviewers, environments, and evidence.

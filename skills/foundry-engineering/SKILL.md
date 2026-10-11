@@ -130,11 +130,9 @@ Change one causal variable at a time when practical. Random edits, broad excepti
 
 Durable work is distinct from the worker. Give bounded ownership, dependencies, write surfaces, inputs, outputs, and proof requirements. Independent work may continue while a specific dependency is blocked. Another worker's statement is information; verify shared state before relying on it. One canonical owner integrates overlapping changes.
 
-## Portability and PC Bridge
+## Portability
 
 Treat every host as a discovered capability profile. FOUNDRY must remain useful with only supplied code and conversation context; unavailable execution becomes an explicit verification gap.
-
-PC Bridge may add approved project targeting, guarded file operations, worktrees, Missions, Goals, WorkAssignments, WorkerRuns, Context Compiler blocks, evidence, effects, coordination, Workboard views, verification, and continuation. It owns permissions, effects, durable work identity, canonical coordination, and project boundaries. FOUNDRY owns engineering knowledge and procedure. Read [optional PC Bridge integration](references/pc-bridge-integration.md) when connected.
 
 Instructions never grant tool, network, login, spending, write, deploy, or destructive authority.
 
@@ -150,3 +148,6 @@ Lead with the engineering outcome. Include only what helps the next decision:
 - next eligible action or authority needed.
 
 Do not declare success because code looks plausible.
+
+## Level report and review
+Print the honest level (1 Paper, 2 Checked, 3 Full) at the start of every run and write it into the gate log. Never claim more than you proved. A receipt may say "passed" only with a valid second-agent review. Details: [levels and review](references/levels-and-review.md).
