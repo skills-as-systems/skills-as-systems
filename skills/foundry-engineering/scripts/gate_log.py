@@ -2,6 +2,7 @@
 """Gate-log validator and report, shared by SITECRAFT and FOUNDRY. stdlib only, no network.
   gate_log.py validate gate-log.json            # is the log honest and consistent?
   gate_log.py report gate-log.json [more.json]  # where is the run, which gates were skipped, waived or blocked
+  gate_log.py cross-check SITECRAFT-LOG FOUNDRY-LOG  # a change touching UI and backend: are both sides done and linked?
 Exit 0 ok, 1 problems, 2 usage. A checker, not a lock: it reads what the agent wrote and cannot know what it left out."""
 import sys, json, argparse
 
@@ -62,12 +63,41 @@ def cmd_report(paths):
         for gid, a in agg.items(): print(f'  {gid}: {a["done"]}/{a["waived"]}/{a["blocked"]}/{a["pending"]}')
     return 0
 
+def last_gate(log): return log['gates'][-1]
+
+def cmd_cross_check(a, b):
+    """A change that touches UI and backend carries two logs, linked by run_id in each log's "linked" block:
+    {"linked": {"peer_skill": "foundry-engineering", "peer_run_id": "...", "experience_contract": "...", "change_contract": "..."}}.
+    'Done' for the whole change needs the SITECRAFT release gate AND the FOUNDRY claim gate both done (not waived without reason)."""
+    la, lb = load(a), load(b); pr = []
+    for name, log in (('SITECRAFT log', la), ('FOUNDRY log', lb)):
+        pr += [f'{name}: {x}' for x in problems(log)]
+    if la.get('skill') != 'sitecraft': pr.append(f'first log is not a sitecraft log (skill={la.get("skill")!r})')
+    if lb.get('skill') != 'foundry-engineering': pr.append(f'second log is not a foundry-engineering log (skill={lb.get("skill")!r})')
+    for name, me, other in (('SITECRAFT', la, lb), ('FOUNDRY', lb, la)):
+        ln = me.get('linked') or {}
+        if not me.get('run_id') or not other.get('run_id'): pr.append('both logs need a run_id to be linked'); break
+        if ln.get('peer_run_id') != other.get('run_id'): pr.append(f'{name} log does not link to the other log (linked.peer_run_id must equal its run_id)')
+    if not pr:
+        for name, log, gid in (('SITECRAFT', la, None), ('FOUNDRY', lb, None)):
+            g = last_gate(log)
+            if g.get('status') not in ('done', 'waived'): pr.append(f'{name}: last gate {g["gate"]} ({g.get("name", "")}) is {g.get("status")}, so the change is not done')
+        fa = next((g for g in lb['gates'] if g.get('name') == 'claims'), None)
+        if not fa or fa.get('status') != 'done': pr.append('FOUNDRY: the claims gate (receipt) is not done; screenshots alone do not cover the backend')
+        sa = next((g for g in la['gates'] if g.get('name') == 'shots'), None)
+        if not sa or sa.get('status') != 'done': pr.append('SITECRAFT: the shots gate is not done; a receipt alone does not cover the UI')
+    for x in pr: print('PROBLEM:', x)
+    if pr: return 1
+    print(f'ok: both sides done and linked. Lowest level claimed: {min(la["level"], lb["level"])}'); return 0
+
 def main():
     ap = argparse.ArgumentParser(); sp = ap.add_subparsers(dest='c')
     v = sp.add_parser('validate'); v.add_argument('file')
     r = sp.add_parser('report'); r.add_argument('files', nargs='+')
+    x = sp.add_parser('cross-check'); x.add_argument('sitecraft_log'); x.add_argument('foundry_log')
     n = ap.parse_args()
     if n.c == 'validate': sys.exit(cmd_validate(n.file))
+    if n.c == 'cross-check': sys.exit(cmd_cross_check(n.sitecraft_log, n.foundry_log))
     if n.c == 'report': sys.exit(cmd_report(n.files))
     ap.print_usage(); sys.exit(2)
 if __name__ == '__main__': main()

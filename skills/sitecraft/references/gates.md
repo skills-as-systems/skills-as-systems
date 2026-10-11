@@ -25,3 +25,6 @@ Small, reversible edits on an existing site with an approved sheet: skip gates 0
 
 ## Optional re-check by a fresh reviewer
 Critique and verify may hand the artifacts to a fresh reviewer that re-enters with only those files. Opt-in, 3 rounds at most, report new findings only.
+
+## UI and backend together
+When one change touches both skills, link the two gate logs and finish both. See [cross-skill](cross-skill.md).
