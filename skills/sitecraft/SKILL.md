@@ -69,3 +69,6 @@ Before step 1, state which level this run can honestly reach:
 - Level 1 (Paper): you cannot run scripts. Follow the same gates and artifacts by hand. Every claim that needs a checker is labelled UNVERIFIED (not run), and the final receipt says "Level 1: checks not executed".
 - Level 3 (Full): Level 2 plus an enforcer add-on that you have seen block or log a step in this session. Never claim Level 3 on faith.
 Never report a higher level than you proved. Write the level into the gate log.
+
+## Gates
+Work in gates 0 to 8 with a gate log; on every return read it first. Details, fast path and commands: [gates](references/gates.md). Templates: `assets/PRODUCT.template.md`, `assets/DESIGN.template.md`, `assets/gate-log.template.json`.

@@ -151,3 +151,6 @@ Do not declare success because code looks plausible.
 
 ## Level report and review
 Print the honest level (1 Paper, 2 Checked, 3 Full) at the start of every run and write it into the gate log. Never claim more than you proved. A receipt may say "passed" only with a valid second-agent review. Details: [levels and review](references/levels-and-review.md).
+
+## Gates
+Work in gates G0-G9 with a gate log; read it first on every return. See [gates](references/gates.md).

@@ -1,0 +1,17 @@
+{
+  "skill": "sitecraft",
+  "run_id": "",
+  "level": 1,
+  "capabilities": {"shell": false, "browser": false, "subagents": false, "enforcer": false},
+  "gates": [
+    {"gate": 0, "name": "intake",    "artifact": "PRODUCT.md",      "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": 1, "name": "sheet",     "artifact": "DESIGN.md",       "status": "pending", "evidence": "buyer approval quote + date", "waiver": ""},
+    {"gate": 2, "name": "direction", "artifact": "2 sketches",      "status": "pending", "evidence": "buyer pick", "waiver": ""},
+    {"gate": 3, "name": "slice",     "artifact": "per-slice shots", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": 4, "name": "shots",     "artifact": "desktop+mobile+320px shots", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": 5, "name": "fix-loop",  "artifact": "defect list + before/after", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": 6, "name": "critique",  "artifact": "rubric result",   "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": 7, "name": "budget",    "artifact": "checker output + weight + fallbacks", "status": "pending", "evidence": "", "waiver": ""},
+    {"gate": 8, "name": "release",   "artifact": "release record",  "status": "pending", "evidence": "", "waiver": ""}
+  ]
+}
