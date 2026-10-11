@@ -148,3 +148,6 @@ Lead with the engineering outcome. Include only what helps the next decision:
 - next eligible action or authority needed.
 
 Do not declare success because code looks plausible.
+
+## Level report and review
+Print the honest level (1 Paper, 2 Checked, 3 Full) at the start of every run and write it into the gate log. Never claim more than you proved. A receipt may say "passed" only with a valid second-agent review. Details: [levels and review](references/levels-and-review.md).
