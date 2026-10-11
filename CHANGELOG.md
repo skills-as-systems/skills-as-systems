@@ -10,7 +10,7 @@
 
 ## Collection 1.0.1 — 2026-08-15
 
-- Corrected every public author, owner, copyright, and Git attribution to **MAKIAVELI**.
+- Corrected every public author, owner, copyright, and Git attribution to **Gbemi Akadiri**.
 - Reorganized the README around choosing, installing, and using a skill before explaining the architecture.
 - Added copyable installation prompts for Codex, Claude Code, and other capable Agent Skills hosts.
 - Reduced Codex and standalone Claude installation from an existing checkout to `python3 scripts/install.py codex|claude`.
